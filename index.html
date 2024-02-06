@@ -37,7 +37,26 @@
 </head>  
 <body>    
     <header>
-        <h1>En esta url se va a empezar a ver el desarrollo de la web </h1>      
+        <div id="main wrapper">
+            <?php include("header.php") ?>
+            <?php include("nav.php") ?> 
+            <?PHP
+        			if (isset($_GET['id'])) {
+        				if (!empty($_GET['id']) && $_GET['id'] != "index") {
+        					if (file_exists($_GET['id'].".php")) {
+        						include ($_GET['id'].".php");
+        					} else {
+        						echo "No existe esta seccion";
+        					}
+        				} else {
+        					include ("home.php");
+        				}
+        			} else {
+        				include ("home.php");
+        			}
+        	?>	
+            <?php include("footer.php") ?> 
+        </div>     
     </header> 
     
     <!-- bootstrapt JS  -->
